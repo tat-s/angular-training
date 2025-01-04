@@ -1,16 +1,40 @@
 <div>
-  <div class="todo-area">
-    @for (todo of todos; track todo) {
-    <li>
-      <span>{{ todo }}</span>
-      <button class="complete-button">Complete</button>
-      <button class="delete-button">Delete</button>
-    </li>
-    }@empty {
-    <p>No todos</p>
-    }
+  <div class="contents">
+    <div class="todo-area">
+      <p>Todo List</p>
+      @for (todo of todos; track todo) {
+      <li>
+        <span>{{ todo }}</span>
+        <button class="complete-button" (click)="onClickCompleteButton(todo)">
+          Complete
+        </button>
+        <button class="delete-button" (click)="onClickDeleteButton(todo)">
+          Delete
+        </button>
+      </li>
+      }@empty {
+      <p class="empty">No todos</p>
+      }
+    </div>
+    <div class="completed-area">
+      <p>Completed List</p>
+      @for (complatedTodo of completedTodos; track complatedTodo) {
+      <li>
+        <span>{{ complatedTodo }}</span>
+        <button
+          class="delete-button"
+          (click)="onClickDeleteCompletedButton(complatedTodo)"
+        >
+          Delete
+        </button>
+      </li>
+      } @empty {
+      <p class="empty">No completed todos</p>
+      }
+    </div>
   </div>
   <div class="todo-form">
+    <p>Todoを追加する</p>
     <input
       type="text"
       class="todo-input"

@@ -1,0 +1,23 @@
+.contents {
+  display: flex;
+  height: 50vh;
+  width: 100%;
+
+  .todo-area {
+    width: 50%;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  .completed-area {
+    width: 50%;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  .empty {
+    text-align: center;
+  }
+}
+.todo-form {
+  padding: 10px;
+}
