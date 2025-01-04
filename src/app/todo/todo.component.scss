@@ -1,3 +1,5 @@
+@use "@angular/material" as mat;
+
 .contents {
   display: flex;
   height: 50vh;
@@ -14,10 +16,42 @@
     padding: 10px;
     overflow-y: auto;
   }
+  li {
+    span {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+  }
   .empty {
     text-align: center;
   }
 }
 .todo-form {
   padding: 10px;
+
+  input {
+    height: 30px;
+    width: 70%;
+    margin-right: 10px;
+  }
+
+  button {
+    height: 30px;
+    width: 50px;
+  }
+}
+
+.delete-button {
+  margin: 5px;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$red-palette,
+      ),
+    )
+  );
+}
+
+.complete-button {
+  margin: 5px;
 }

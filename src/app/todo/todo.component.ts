@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-todo',
-  imports: [FormsModule],
+  imports: [FormsModule, MatButton, MatIconModule, MatMiniFabButton],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss',
 })

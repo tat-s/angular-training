@@ -3,15 +3,25 @@
     <div class="todo-area">
       <p>Todo List</p>
       @for (todo of todos; track todo) {
-      <li>
-        <span>{{ todo }}</span>
-        <button class="complete-button" (click)="onClickCompleteButton(todo)">
-          Complete
-        </button>
-        <button class="delete-button" (click)="onClickDeleteButton(todo)">
-          Delete
-        </button>
-      </li>
+      <ul>
+        <li>
+          <span>{{ todo }}</span>
+          <button
+            mat-mini-fab
+            class="complete-button"
+            (click)="onClickCompleteButton(todo)"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            class="delete-button"
+            (click)="onClickDeleteButton(todo)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+      </ul>
       }@empty {
       <p class="empty">No todos</p>
       }
@@ -22,10 +32,11 @@
       <li>
         <span>{{ complatedTodo }}</span>
         <button
+          mat-mini-fab
           class="delete-button"
           (click)="onClickDeleteCompletedButton(complatedTodo)"
         >
-          Delete
+          <mat-icon>delete</mat-icon>
         </button>
       </li>
       } @empty {
@@ -41,6 +52,6 @@
       placeholder="Add a new todo"
       [(ngModel)]="inputText"
     />
-    <button class="todo-button" (click)="onClickAddTodoButton()">Add</button>
+    <button mat-flat-button (click)="onClickAddTodoButton()">Add</button>
   </div>
 </div>
