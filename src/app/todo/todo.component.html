@@ -1,7 +1,9 @@
 <div>
   <div class="contents">
     <div class="todo-area">
-      <p>Todo List</p>
+      <p>
+        Todo List <span style="font-size: 14px">(OverlayScrollbarsを使用)</span>
+      </p>
       <overlay-scrollbars
         [options]="options"
         class="scroll-area"
@@ -9,23 +11,21 @@
       >
         @for (todo of todos; track todo) {
         <ul>
-          <li>
-            <span>{{ todo }}</span>
-            <button
-              mat-mini-fab
-              class="complete-button"
-              (click)="onClickCompleteButton(todo)"
-            >
-              <mat-icon>check</mat-icon>
-            </button>
-            <button
-              mat-mini-fab
-              class="delete-button"
-              (click)="onClickDeleteButton(todo)"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
-          </li>
+          <button
+            mat-button
+            class="complete-button"
+            (click)="onClickCompleteButton(todo)"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+          <span>{{ todo }}</span>
+          <button
+            mat-button
+            class="delete-button"
+            (click)="onClickDeleteButton(todo)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
         </ul>
         }@empty {
         <p class="empty">No todos</p>
@@ -33,31 +33,40 @@
       </overlay-scrollbars>
     </div>
     <div class="completed-area">
-      <p>Completed List</p>
-      @for (complatedTodo of completedTodos; track complatedTodo) {
-      <li>
-        <span>{{ complatedTodo }}</span>
-        <button
-          mat-mini-fab
-          class="delete-button"
-          (click)="onClickDeleteCompletedButton(complatedTodo)"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </li>
-      } @empty {
-      <p class="empty">No completed todos</p>
-      }
+      <p>
+        Completed List
+        <span style="font-size: 14px">(Angular標準のスクロールバーを使用)</span>
+      </p>
+      <div class="scroll-area">
+        @for (complatedTodo of completedTodos; track complatedTodo) {
+        <ul>
+          <span>{{ complatedTodo }}</span>
+          <button
+            mat-button
+            class="delete-button"
+            (click)="onClickDeleteCompletedButton(complatedTodo)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ul>
+        } @empty {
+        <p class="empty">No completed todos</p>
+        }
+      </div>
     </div>
   </div>
   <div class="todo-form">
-    <p>Todoを追加する</p>
-    <input
-      type="text"
-      class="todo-input"
-      placeholder="Add a new todo"
-      [(ngModel)]="inputText"
-    />
-    <button mat-flat-button (click)="onClickAddTodoButton()">Add</button>
+    <div class="form-contents">
+      <p>Todoを追加する</p>
+      <div class="form-item">
+        <input
+          type="text"
+          class="todo-input"
+          placeholder="Add a new todo"
+          [(ngModel)]="inputText"
+        />
+        <button mat-flat-button (click)="onClickAddTodoButton()">Add</button>
+      </div>
+    </div>
   </div>
 </div>
