@@ -2,29 +2,35 @@
   <div class="contents">
     <div class="todo-area">
       <p>Todo List</p>
-      @for (todo of todos; track todo) {
-      <ul>
-        <li>
-          <span>{{ todo }}</span>
-          <button
-            mat-mini-fab
-            class="complete-button"
-            (click)="onClickCompleteButton(todo)"
-          >
-            <mat-icon>check</mat-icon>
-          </button>
-          <button
-            mat-mini-fab
-            class="delete-button"
-            (click)="onClickDeleteButton(todo)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </li>
-      </ul>
-      }@empty {
-      <p class="empty">No todos</p>
-      }
+      <overlay-scrollbars
+        [options]="options"
+        class="scroll-area"
+        [defer]="true"
+      >
+        @for (todo of todos; track todo) {
+        <ul>
+          <li>
+            <span>{{ todo }}</span>
+            <button
+              mat-mini-fab
+              class="complete-button"
+              (click)="onClickCompleteButton(todo)"
+            >
+              <mat-icon>check</mat-icon>
+            </button>
+            <button
+              mat-mini-fab
+              class="delete-button"
+              (click)="onClickDeleteButton(todo)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </li>
+        </ul>
+        }@empty {
+        <p class="empty">No todos</p>
+        }
+      </overlay-scrollbars>
     </div>
     <div class="completed-area">
       <p>Completed List</p>
