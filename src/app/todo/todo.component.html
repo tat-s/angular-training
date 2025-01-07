@@ -1,7 +1,13 @@
 <div>
-  <div class="contents">
+  <div
+    [class]="{
+      contents: true,
+      'is-larger-than-full-hd': isLargerThanFullHD,
+      'is-smaller-than-sd': isSmallerThanSD
+    }"
+  >
     <div class="todo-area">
-      <p>
+      <p style="padding-left: 40px">
         Todo List <span style="font-size: 14px">(OverlayScrollbarsを使用)</span>
       </p>
       <overlay-scrollbars
@@ -33,7 +39,7 @@
       </overlay-scrollbars>
     </div>
     <div class="completed-area">
-      <p>
+      <p style="padding-left: 40px">
         Completed List
         <span style="font-size: 14px">(Angular標準のスクロールバーを使用)</span>
       </p>
@@ -55,7 +61,12 @@
       </div>
     </div>
   </div>
-  <div class="todo-form">
+  <div
+    [class]="{
+      'todo-form': true,
+      'is-larger-than-full-hd': isLargerThanFullHD
+    }"
+  >
     <div class="form-contents">
       <p>Todoを追加する</p>
       <div class="form-item">

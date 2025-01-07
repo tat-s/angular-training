@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,10 +12,12 @@ import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss',
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit {
   todos: string[] = Array.from({ length: 50 }, (_, i) => `タスク${i + 1}`);
   completedTodos: string[] = []; // 完了済みTodoリスト
   inputText = ''; // 入力欄のテキスト
+  isLargerThanFullHD = false; // 1920px以上の画面かどうか
+  isSmallerThanSD = false; // 980px以下の画面かどうか
 
   // スクロールバーを設定
   options = {
@@ -24,6 +27,27 @@ export class TodoComponent {
       autoHideDelay: 100,
     },
   };
+
+  constructor(private responsive: BreakpointObserver) {}
+
+  ngOnInit() {
+    this.responsive.observe(Breakpoints.XLarge).subscribe((result) => {
+      if (result.matches) {
+        this.isLargerThanFullHD = true;
+      } else {
+        this.isLargerThanFullHD = false;
+      }
+    });
+    this.responsive
+      .observe([Breakpoints.XSmall, Breakpoints.Small])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.isSmallerThanSD = true;
+        } else {
+          this.isSmallerThanSD = false;
+        }
+      });
+  }
 
   /**
    * ADDボタンがクリックされたときの処理

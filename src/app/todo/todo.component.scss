@@ -4,7 +4,7 @@
   display: flex;
   height: 800px;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  border: 5px solid #aaa;
 
   .todo-area {
     height: 90%;
@@ -36,7 +36,7 @@
   padding: 10px;
 
   .form-contents {
-    width: 90%;
+    width: 100%;
     text-align: left;
 
     .form-item {
@@ -54,6 +54,15 @@
       }
     }
   }
+}
+
+.is-larger-than-full-hd {
+  width: 1920px;
+  margin: 0 auto;
+}
+
+.is-smaller-than-sd {
+  height: 400px;
 }
 
 .delete-button {
