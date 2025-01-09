@@ -11,4 +11,11 @@ export const routes: Routes = [
     path: 'todo-list',
     component: TodoComponent,
   },
+  {
+    path: 'wijmogrid',
+    loadComponent: () =>
+      import('./wijmogrid/wijmogrid.component').then(
+        (m) => m.WijmogridComponent
+      ),
+  },
 ];

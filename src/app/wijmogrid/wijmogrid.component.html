@@ -1,0 +1,23 @@
+<div>
+  <wj-flex-grid
+    #flex
+    [itemsSource]="data"
+    style="height: 500px"
+    (initialized)="init()"
+  >
+    <wj-flex-grid-column
+      [header]="'Country'"
+      [binding]="'country'"
+    ></wj-flex-grid-column>
+    <wj-flex-grid-column
+      [header]="'Sales'"
+      [binding]="'sales'"
+      format="n2"
+    ></wj-flex-grid-column>
+    <wj-flex-grid-column
+      [header]="'Expenses'"
+      [binding]="'expenses'"
+      format="n2"
+    ></wj-flex-grid-column>
+  </wj-flex-grid>
+</div>
