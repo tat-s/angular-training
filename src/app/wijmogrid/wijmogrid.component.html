@@ -1,10 +1,5 @@
 <div>
-  <wj-flex-grid
-    #flex
-    [itemsSource]="data"
-    style="height: 500px"
-    (initialized)="init()"
-  >
+  <wj-flex-grid #flex [itemsSource]="dataCollectionView" (initialized)="init()">
     <wj-flex-grid-column
       [header]="'Country'"
       [binding]="'country'"
@@ -20,4 +15,10 @@
       format="n2"
     ></wj-flex-grid-column>
   </wj-flex-grid>
+  <wj-collection-view-navigator
+    headerFormat="{currentPage:n0} / {pageCount:n0} ページ"
+    [byPage]="true"
+    [cv]="dataCollectionView"
+  >
+  </wj-collection-view-navigator>
 </div>
