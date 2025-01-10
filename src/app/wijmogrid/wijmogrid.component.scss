@@ -1,0 +1,42 @@
+.container {
+  width: fit-content;
+}
+
+.wj-flexgrid {
+  width: fit-content;
+  display: flex;
+}
+
+.wj-collection-view-navigator {
+  width: fit-content;
+}
+
+.pagination {
+  width: fit-content;
+  button {
+    width: 40px; /* ボタン幅を固定 */
+    text-align: center; /* テキストを中央揃え */
+    padding: 5px 0; /* 上下の余白を調整 */
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  button:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+  }
+
+  span {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    color: #999;
+  }
+}

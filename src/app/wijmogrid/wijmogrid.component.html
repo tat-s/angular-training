@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <wj-flex-grid #flex [itemsSource]="dataCollectionView" (initialized)="init()">
     <wj-flex-grid-column
       [header]="'Country'"
@@ -21,4 +21,41 @@
     [cv]="dataCollectionView"
   >
   </wj-collection-view-navigator>
+  Wijmoのページネーション
+
+  <div class="pagination">
+    <button
+      [disabled]="dataCollectionView.pageIndex === 0"
+      (click)="dataCollectionView.moveToPreviousPage()"
+    >
+      Previous
+    </button>
+    @if (getVisiblePages()[0] > 1) {
+    <button (click)="changePage(1)">1</button>
+    } @if (getVisiblePages()[0] > 2) {
+    <span>...</span>
+    } @for (page of getVisiblePages(); track $index){
+    <button
+      [class.active]="page === dataCollectionView.pageIndex + 1"
+      (click)="changePage(page)"
+    >
+      {{ page }}
+    </button>
+    } @if (getVisiblePages().slice(-1)[0] < dataCollectionView.pageCount - 1) {
+    <span>...</span>
+    } @if (getVisiblePages().slice(-1)[0] < dataCollectionView.pageCount) {
+    <button (click)="changePage(dataCollectionView.pageCount)">
+      {{ dataCollectionView.pageCount }}
+    </button>
+    }
+    <button
+      [disabled]="
+        dataCollectionView.pageIndex === dataCollectionView.pageCount - 1
+      "
+      (click)="dataCollectionView.moveToNextPage()"
+    >
+      Next
+    </button>
+    自作のページネーション
+  </div>
 </div>

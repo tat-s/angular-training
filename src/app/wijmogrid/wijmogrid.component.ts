@@ -10,22 +10,16 @@ import { WjInputModule } from '@grapecity/wijmo.angular2.input';
   styleUrl: './wijmogrid.component.scss',
 })
 export class WijmogridComponent {
-  data = [
-    { id: 0, country: 'US', sales: 1318.37, expenses: 4212.41 },
-    { id: 1, country: 'Germany', sales: 5847.95, expenses: 89.79 },
-    { id: 2, country: 'UK', sales: 502.55, expenses: 2878.5 },
-    { id: 3, country: 'Japan', sales: 4675.4, expenses: 488.65 },
-    { id: 4, country: 'Italy', sales: 2117.57, expenses: 925.6 },
-    { id: 5, country: 'Greece', sales: 322.1, expenses: 4163.96 },
-    { id: 6, country: 'Spain', sales: 268.17, expenses: 186.2 },
-    { id: 7, country: 'Canada', sales: 179.2, expenses: 491.2 },
-    { id: 8, country: 'Mexico', sales: 761.97, expenses: 74.2 },
-    { id: 9, country: 'Brazil', sales: 137.17, expenses: 123.2 },
-    { id: 10, country: 'Argentina', sales: 469.2, expenses: 23.2 },
-    { id: 11, country: 'Australia', sales: 926.2, expenses: 23.2 },
-    { id: 12, country: 'China', sales: 146.2, expenses: 23.2 },
-    { id: 13, country: 'India', sales: 123.2, expenses: 23.2 },
-  ];
+  maxPagesToShow: number = 3; // 表示するページ番号の最大数
+  pageSize: number = 10; // 1ページのデータ数
+
+  // データ
+  data = Array.from({ length: 100 }, (_, i) => ({
+    id: i,
+    country: `Country ${i + 1}`,
+    sales: Math.random() * 10000,
+    expenses: Math.random() * 5000,
+  }));
   dataCollectionView = new CollectionView(this.data, {
     pageSize: 5,
   });
@@ -34,4 +28,29 @@ export class WijmogridComponent {
   init = () => {
     console.log(this.flex);
   };
+
+  // 現在表示すべきページ番号のリストを計算
+  getVisiblePages(): number[] {
+    const total = this.dataCollectionView.pageCount; // 総ページ数
+    const current = this.dataCollectionView.pageIndex + 1; // 現在のページ (0始まりを補正)
+    const half = Math.floor(this.maxPagesToShow / 2); // 中心位置
+    let start = Math.max(1, current - half); // 開始ページ
+    let end = Math.min(total, current + half); // 終了ページ
+
+    // ページ数が不足する場合に調整
+    if (end - start + 1 < this.maxPagesToShow) {
+      if (start === 1) {
+        end = Math.min(total, start + this.maxPagesToShow - 1);
+      } else if (end === total) {
+        start = Math.max(1, end - this.maxPagesToShow + 1);
+      }
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  }
+
+  // ページを変更
+  changePage(page: number) {
+    this.dataCollectionView.moveToPage(page - 1);
+  }
 }
