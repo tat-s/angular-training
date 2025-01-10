@@ -6,60 +6,61 @@
       'is-smaller-than-sd': isSmallerThanSD
     }"
   >
-    <div class="todo-area">
-      <p style="padding-left: 40px">
-        Todo List <span style="font-size: 14px">(OverlayScrollbarsを使用)</span>
-      </p>
-      <overlay-scrollbars
-        [options]="options"
-        class="scroll-area"
-        [defer]="true"
-      >
-        @for (todo of todos; track todo) {
-        <ul>
-          <button
-            mat-button
-            class="complete-button"
-            (click)="onClickCompleteButton(todo)"
+    <as-split direction="horizontal">
+      <as-split-area [size]="50" minSize="30">
+        <div class="todo-area">
+          <p style="padding-left: 40px">Todo List</p>
+          <overlay-scrollbars
+            [options]="options"
+            class="scroll-area"
+            [defer]="true"
           >
-            <mat-icon>check</mat-icon>
-          </button>
-          <span>{{ todo }}</span>
-          <button
-            mat-button
-            class="delete-button"
-            (click)="onClickDeleteButton(todo)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </ul>
-        }@empty {
-        <p class="empty">No todos</p>
-        }
-      </overlay-scrollbars>
-    </div>
-    <div class="completed-area">
-      <p style="padding-left: 40px">
-        Completed List
-        <span style="font-size: 14px">(Angular標準のスクロールバーを使用)</span>
-      </p>
-      <div class="scroll-area">
-        @for (complatedTodo of completedTodos; track complatedTodo) {
-        <ul>
-          <span>{{ complatedTodo }}</span>
-          <button
-            mat-button
-            class="delete-button"
-            (click)="onClickDeleteCompletedButton(complatedTodo)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </ul>
-        } @empty {
-        <p class="empty">No completed todos</p>
-        }
-      </div>
-    </div>
+            @for (todo of todos; track todo) {
+            <ul>
+              <button
+                mat-button
+                class="complete-button"
+                (click)="onClickCompleteButton(todo)"
+              >
+                <mat-icon>check</mat-icon>
+              </button>
+              <span>{{ todo }}</span>
+              <button
+                mat-button
+                class="delete-button"
+                (click)="onClickDeleteButton(todo)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ul>
+            }@empty {
+            <p class="empty">No todos</p>
+            }
+          </overlay-scrollbars>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="50" minSize="30" class="completed-area">
+        <div class="completed-area">
+          <p style="padding-left: 40px">Completed List</p>
+          <div class="scroll-area">
+            @for (complatedTodo of completedTodos; track complatedTodo) {
+            <ul>
+              <span>{{ complatedTodo }}</span>
+              <button
+                mat-button
+                class="delete-button"
+                (click)="onClickDeleteCompletedButton(complatedTodo)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ul>
+            } @empty {
+            <p class="empty">No completed todos</p>
+            }
+          </div>
+        </div>
+      </as-split-area>
+    </as-split>
   </div>
   <div
     [class]="{

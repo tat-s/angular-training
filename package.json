@@ -23,6 +23,7 @@
     "@grapecity/wijmo.all": "^5.20242.30",
     "@grapecity/wijmo.angular2.all": "^5.20242.30",
     "@grapecity/wijmo.styles": "^5.20242.30",
+    "angular-split": "^18.0.0",
     "overlayscrollbars-ngx": "^0.5.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

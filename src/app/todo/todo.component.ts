@@ -3,12 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AngularSplitModule } from 'angular-split';
 import { ScrollbarsAutoHideBehavior } from 'overlayscrollbars';
 import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
 
 @Component({
   selector: 'app-todo',
-  imports: [FormsModule, MatButton, MatIconModule, OverlayscrollbarsModule],
+  imports: [
+    FormsModule,
+    MatButton,
+    MatIconModule,
+    OverlayscrollbarsModule,
+    AngularSplitModule,
+  ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss',
 })

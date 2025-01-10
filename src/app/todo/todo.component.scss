@@ -3,31 +3,36 @@
 .contents {
   display: flex;
   height: 800px;
-  background-color: #f5f5f5;
-  border: 5px solid #aaa;
 
-  .todo-area {
-    height: 90%;
-    width: 50%;
-    border-right: 1px solid #ccc;
-    padding: 10px;
+  .as-split-area {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 
-    .scroll-area {
+    .todo-area {
+      display: flex;
+      flex-direction: column;
       height: 90%;
-    }
-  }
-  .completed-area {
-    height: 90%;
-    width: 50%;
-    padding: 10px;
+      border: 2px solid #ccc;
+      margin: 40px 10px 0 10px;
 
-    .scroll-area {
-      height: 90%;
-      overflow-y: auto;
+      .scroll-area {
+      }
     }
-  }
-  .empty {
-    text-align: center;
+    .completed-area {
+      height: 90%;
+      margin: auto;
+      border: 2px solid #ccc;
+      margin: 40px 10px 0 10px;
+
+      .scroll-area {
+        height: 90%;
+        overflow-y: auto;
+      }
+    }
+    .empty {
+      text-align: center;
+    }
   }
 }
 .todo-form {
@@ -70,3 +75,11 @@
 
 .complete-button {
 }
+
+// Splitterのスタイルを上書き
+// ::ng-deep .as-split-gutter {
+//   background-color: white !important;
+// }
+// ::ng-deep .as-split-gutter-icon {
+//   background-image: none !important;
+// }
